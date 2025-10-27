@@ -4,6 +4,7 @@ from app.pages.usuarios import usuarios
 from app.pages.roles import roles
 from app.pages.tipos_justificacion import tipos_justificacion
 from app.pages.feriados import feriados
+from app.pages.perfiles import perfiles
 
 app = rx.App(
     theme=rx.theme(appearance="light"),
@@ -19,5 +20,6 @@ app = rx.App(
 app.add_page(dashboard, route="/")
 app.add_page(usuarios, route="/usuarios")
 app.add_page(roles, route="/roles")
+app.add_page(perfiles, route="/perfiles")
 app.add_page(tipos_justificacion, route="/tipos-justificacion")
 app.add_page(feriados, route="/feriados")

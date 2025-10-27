@@ -4,6 +4,7 @@ import reflex as rx
 class SidebarState(rx.State):
     """State for sidebar navigation"""
 
+    collapsed: bool = False
     current_page: str = "dashboard"
     security_expanded: bool = False
     parameters_expanded: bool = False
@@ -14,8 +15,15 @@ class SidebarState(rx.State):
             "icon": "home",
             "route": "/",
             "type": "page",
+            "parent": "",
         },
-        {"id": "security", "name": "Seguridad", "icon": "shield", "type": "menu"},
+        {
+            "id": "security",
+            "name": "Seguridad",
+            "icon": "shield",
+            "type": "menu",
+            "parent": "",
+        },
         {
             "id": "users",
             "name": "Usuarios",
@@ -25,14 +33,20 @@ class SidebarState(rx.State):
             "type": "page",
         },
         {
-            "id": "roles",
-            "name": "Roles",
+            "id": "perfiles",
+            "name": "Perfiles",
             "icon": "user-check",
-            "route": "/roles",
+            "route": "/perfiles",
             "parent": "security",
             "type": "page",
         },
-        {"id": "parameters", "name": "Parámetros", "icon": "settings", "type": "menu"},
+        {
+            "id": "parameters",
+            "name": "Parámetros",
+            "icon": "settings",
+            "type": "menu",
+            "parent": "",
+        },
         {
             "id": "justification_types",
             "name": "Tipo de Justificaciones",
@@ -65,3 +79,8 @@ class SidebarState(rx.State):
     def toggle_parameters_menu(self):
         """Toggle parameters submenu"""
         self.parameters_expanded = not self.parameters_expanded
+
+    @rx.event
+    def toggle_sidebar(self):
+        """Toggle the sidebar collapsed state"""
+        self.collapsed = not self.collapsed
