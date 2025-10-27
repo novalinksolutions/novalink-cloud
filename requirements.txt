@@ -1,2 +1,5 @@
 
 reflex==0.8.17a1
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.25
+
